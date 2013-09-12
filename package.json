@@ -8,5 +8,5 @@
     "email": "softguyus@yahoo.com"
   },
   "main": "./coffee2js.js",  
-  "readmeFilename": "README.MD",
+  "readmeFilename": "README.MD"
 }
