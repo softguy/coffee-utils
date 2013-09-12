@@ -32,7 +32,7 @@ function compilefile(p){
 	
 	lineReader.eachLine(p, function(line, last) {
 		linenum ++;
-		console.log(linenum+"\t"+line);
+		//debug(linenum+"\t"+line);
 
 		//block comment always start from 0?
 		var i=line.indexOf('###');
@@ -67,8 +67,47 @@ function compilefile(p){
 			} catch (e){
 				console.log(e);
 			}
+
 			//debug('dst=' + dst);
-			fs.writeFile(outfile, dst);
+			//fs.writeFile(outfile+".tmp2.js", dst);			
+			
+			//Now, one problem is that there is two more empty lines after each /** **/
+			//var lines=dst.split('\r');	//Not working?
+			//var lines = dst.match(/^.*([\n\r]+|$)/gm);
+			var lines = dst.split(/\r\n|\r|\n/g);
+			
+			debug("lines.length="+lines.length);
+			var dst2='';
+			for (var i = 0; i < lines.length; i++){
+				line=lines[i];
+				//debug('line='+line);
+				var x=line.indexOf('/*');
+				var y=line.indexOf('*/');
+				//debug('x='+x+',y='+y);
+				if (x>=0 && y>0){
+					debug('single line comments at:'+i);
+					line = line.replace('/*', '//');
+					debug('****line='+line);
+					line =line.replace('*/', '');
+					dst2 += line;
+					dst2 += os.EOL;
+						
+					//skip the next 2 empty lines
+					line = lines[++i];
+					line = line.trim();
+					if (line.length==0){
+						line = lines[++i];
+						line = line.trim();
+						if (line.length==0){
+							continue;
+						}
+					}
+					continue;
+				}
+				dst2 += line;
+				dst2 += os.EOL;
+			}
+			fs.writeFile(outfile, dst2);
 		}
 	});
 }
