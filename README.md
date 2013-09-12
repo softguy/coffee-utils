@@ -13,7 +13,7 @@ from
 
 https://github.com/jashkenas/coffee-script/issues/2365
 
-"For this reason I'd find it useful to have certain single-line CoffeeScript comments appear as single-line JavaScript comments in the compiled output. Perhaps something like¡­"
+"For this reason I'd find it useful to have certain single-line CoffeeScript comments appear as single-line JavaScript comments in the compiled output. Perhaps something likeï¿½ï¿½"
 
 "Please add single line comments to the compiled code. Even if you support some limited syntax of it its fully acceptable. Just support some easy common cases, thats it!
 
