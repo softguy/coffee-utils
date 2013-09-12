@@ -2,12 +2,11 @@
   "name": "coffee-utils",
   "description": "Utils that can compile CoffeeScript to js while keeping the ALL of the original comments including single line comments",
   "version": "0.1.0",
-  "homepage": "http://github.com/softguy/coffee-utils",
+  "homepage": "http://www.transppt.com",
   "author": {
     "name": "softguy",
     "email": "softguyus@yahoo.com"
   },
-  "main": "./coffee2js.js",
-  "readme": "[![build status](https://secure.travis-ci.org/pgte/carrier.png)](http://travis-ci.org/pgte/carrier)\nCarrier helps you implement new-line terminated protocols over node.js.\n\nThe client can send you chunks of lines and carrier will only notify you on each completed line.\n\n## Install\n\n    $ npm install carrier\n    \n## Usage\n\n```javascript\nvar net     = require('net'),\n    carrier = require('carrier');\n\nvar server = net.createServer(function(conn) {\n  carrier.carry(conn, function(line) {\n    console.log('got one line: ' + line);\n  });\n});\nserver.listen(4001);\n```\n  \nOr, you can also listen to the \"line\" event on the returned object of carrier.carry() like this:\n\n```javascript\nvar net     = require('net'),\n    carrier = require('carrier');\n\nvar server = net.createServer(function(conn) {\n  var my_carrier = carrier.carry(conn);\n  my_carrier.on('line',  function(line) {\n    console.log('got one line: ' + line);\n  });\n});\nserver.listen(4001);\n```\ncarrier.carry accepts the following options:\n\n```javascript\n  carrier.carry(reader, listener, encoding, separator)\n```\n* reader: the stream reader\n* listener: a \"line\" event listener function\n* encoding: what encoding to assume. Default: \"utf8\"\n* separator: what line separator to use. Default: /\\r?\\n/\n\nAll are optional except for the first.",
+  "main": "./coffee2js.js",  
   "readmeFilename": "README.MD",
 }
